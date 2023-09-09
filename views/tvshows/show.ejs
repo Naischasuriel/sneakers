@@ -1,0 +1,69 @@
+<%- include('../partials/header') %>
+
+<section id="tvshows-detail">
+  <h1><%= tvshows.title %></h1>
+  
+  <p><strong>Release Year:</strong> <%= tvshows.releaseYear %></p>
+  
+  <p><strong>MPAA Rating:</strong> <%= tvshows.mpaaRating %></p>
+  
+  <p><strong>Now Showing:</strong> <%= tvshows.nowShowing ? 'Yes' : 'No' %></p>
+  
+  <% if (tvshows.cast && tvshows.cast.length > 0) { %>
+    <h2>Cast:</h2>
+    <ul>
+      <% tvshows.cast.forEach(function(performer) { %>
+        <li><%= performer.name %></li> <!-- Assuming the performer object has a name attribute -->
+      <% }) %>
+    </ul>
+  <% } %>
+  
+  <% if (tvshows.reviews && tvshows.reviews.length > 0) { %>
+    <h2>Reviews:</h2>
+    <ul>
+      <% tvshows.reviews.forEach(function(review) { %>
+        <li>
+          <p><strong>Rating:</strong> <%= review.rating %> Stars</p>
+          <p><%= review.content %></p>
+        </li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <%- include('../partials/header') %>
+
+<form action="/tvshows/<%= tvshows._id %>?_method=PUT" method="POST">
+
+  <!-- Title Field -->
+  <label for="title">Title:</label>
+  <input type="text" id="title" name="title" value="<%= tvshows.title %>"><br><br>
+
+  <!-- Release Year Field -->
+  <label for="releaseYear">Release Year:</label>
+  <input type="number" id="releaseYear" name="releaseYear" value="<%= tvshows.releaseYear %>"><br><br>
+
+  <!-- MPAA Rating Field -->
+  <label for="mpaaRating">MPAA Rating:</label>
+  <select id="mpaaRating" name="mpaaRating">
+    <option value="G" <%= tvshows.mpaaRating === 'G' ? 'selected' : '' %>>G</option>
+    <option value="PG" <%= tvshows.mpaaRating === 'PG' ? 'selected' : '' %>>PG</option>
+    <option value="PG-13" <%= tvshows.mpaaRating === 'PG-13' ? 'selected' : '' %>>PG-13</option>
+    <option value="R" <%= tvshows.mpaaRating === 'R' ? 'selected' : '' %>>R</option>
+  </select><br><br>
+
+  <!-- Now Showing Field -->
+  <label for="nowShowing">Now Showing:</label>
+  <input type="checkbox" id="nowShowing" name="nowShowing" <%= tvshows.nowShowing ? 'checked' : '' %>><br><br>
+
+  <!-- Cast and Reviews aren't directly editable through this form since they refer to other models or are complex arrays. You would typically manage them with separate interfaces or additional form sections. -->
+
+  <!-- Submit Button -->
+  <button type="submit">Update TV Show</button>
+
+</form>
+
+<%- include('../partials/footer') %>
+
+</section>
+
+<%- include('../partials/footer') %>

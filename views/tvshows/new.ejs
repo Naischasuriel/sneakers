@@ -1,0 +1,33 @@
+<%- include('../partials/header') %>
+
+<div>Before adding, please ensure that the TV show is not in the following list:</div>
+<section id="badge-container">
+  <% tvshows.forEach(function(show) { %>
+    <article class="badge"><%= show.title %></article>
+  <% }) %>
+</section>
+
+<form id="add-tvshow-form" action="/tvshows" method="POST">
+  <label>Title:</label>
+  <input type="text" name="title" required>
+  
+  <label>Release Year:</label>
+  <input type="number" name="releaseYear" min="1927" value="<%= new Date().getFullYear() %>">
+  
+  <label>MPAA Rating:</label>
+  <select name="mpaaRating">
+    <option value="G">G</option>
+    <option value="PG">PG</option>
+    <option value="PG-13">PG-13</option>
+    <option value="R">R</option>
+  </select>
+  
+  <!-- Assuming you have a system in place to link performers, we won't touch 'cast' now -->
+  
+  <label>Now Showing:</label>
+  <input type="checkbox" name="nowShowing" checked>
+
+  <input type="submit" value="Add TV Show">
+</form>
+
+<%- include('../partials/footer') %>
