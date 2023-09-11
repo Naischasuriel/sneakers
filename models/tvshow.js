@@ -32,7 +32,7 @@ const tvshowSchema = new Schema({
   },
   cast: [{
     type: Schema.Types.ObjectId,
-    ref: 'Performer'
+    ref: 'actor'
   }],
   nowShowing: { type: Boolean, default: true },
   reviews: [reviewSchema]

@@ -24,7 +24,7 @@ require('./config/database');
 
 // Require the app's Mongoose models
 const tvshow = require('./models/tvshow');
-const Performer = require('./models/performer');
+const actor = require('./models/actor');
 
 // Example CRUD
 

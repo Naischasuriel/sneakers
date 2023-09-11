@@ -6,15 +6,26 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <title><%= title || "Dummy Title" %></title>
-
 </head>
 <body>
   <nav>
-    <img src="/images/camera.svg">
-    <a href="/performers/new"	<%- title === 'Add Performer' ? 'class="active"' : '' %>>
-		ADD PERFORMER</a>
-    <a href="/tvshows/new" <%- title === 'Add tvshow' ? 'class="active"' : '' %>>ADD tvshow</a>
-    <a href="/tvshows" <%- title === 'All tvshows' ? 'class="active"' : '' %>>ALL tvshowS</a>
+    <!-- Site title or logo -->
+    <div class="site-logo">
+      <img src="/images/little tv.png" alt="Site logo">
+      <h2>TV Show Central</h2> <!-- You can replace this with your site's title -->
+    </div>
+    
+    <!-- Navigation links -->
+    <div class="nav-links">
+      <a href="/actors/new" <%- title === 'Add actor' ? 'class="active"' : '' %>>Add Actor</a>
+      <a href="/tvshows/new" <%- title === 'Add tvshow' ? 'class="active"' : '' %>>Add TV Show</a>
+      <a href="/tvshows" <%- title === 'All tvshows' ? 'class="active"' : '' %>>Browse TV Shows</a>
+    </div>
   </nav>
+  
   <main>
     <h1><%= title %></h1>
+    <!-- ... rest of your content ... -->
+  </main>
+</body>
+</html>

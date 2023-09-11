@@ -12,8 +12,8 @@
   <% if (tvshows.cast && tvshows.cast.length > 0) { %>
     <h2>Cast:</h2>
     <ul>
-      <% tvshows.cast.forEach(function(performer) { %>
-        <li><%= performer.name %></li> <!-- Assuming the performer object has a name attribute -->
+      <% tvshows.cast.forEach(function(actor) { %>
+        <li><%= actor.name %></li> <!-- Assuming the actor object has a name attribute -->
       <% }) %>
     </ul>
   <% } %>

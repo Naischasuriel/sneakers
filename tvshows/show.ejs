@@ -19,10 +19,10 @@
   <!-- end cast list -->
 </section>
 <!-- add to cast form below this comment -->
-<form id="add-per-to-cast" action="/tvshows/<%= tvshow._id %>/performers" method="POST">
-  <select name="performerId">
-    <!-- Emit an option for each performer -->
-    <%- performers.map(p => 
+<form id="add-per-to-cast" action="/tvshows/<%= tvshow._id %>/actors" method="POST">
+  <select name="actorId">
+    <!-- Emit an option for each actor -->
+    <%- actors.map(p => 
       `<option value="${p._id}">${p.name}</option>`
     ).join('') %>
   </select>

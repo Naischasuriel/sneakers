@@ -1,5 +1,5 @@
 const tvshow = require('../models/tvshow');
-const Performer = require('../models/performer');
+const actor = require('../models/actors');
 
 module.exports = {
   index,
@@ -16,14 +16,14 @@ async function index(req, res) {
 }
 
 async function show(req, res) {
-  // Populate the cast array with performer docs instead of ObjectIds
+  // Populate the cast array with actor docs instead of ObjectIds
   const tvshows = await tvshow.findById(req.params.id);
-  // Mongoose query builder approach to retrieve performers not the tvshow:
-    // Performer.find({}).where('_id').nin(tvshow.cast)
+  // Mongoose query builder approach to retrieve actors not the tvshow:
+    // actor.find({}).where('_id').nin(tvshow.cast)
   // The native MongoDB approach uses a query object to find 
-  // performer docs whose _ids are not in the tvshow.cast array like this:
-  const performers = await Performer.find({ _id: { $nin: tvshows.cast } }).sort('name');
-  res.render('tvshows/show', { title: 'tvshow Detail', tvshows, performers });
+  // actor docs whose _ids are not in the tvshow.cast array like this:
+  const actors = await actor.find({ _id: { $nin: tvshows.cast } }).sort('name');
+  res.render('tvshows/show', { title: 'tvshow Detail', tvshows, actors });
 }
 
 async function newtvshow(req, res) {
@@ -68,7 +68,7 @@ async function update(req, res) {
     await tvshow.findByIdAndUpdate(req.params.id, req.body, { new: true });
     
     // res.render(`/tvshows/${req.params.id}`, { title: "edit n stuff"});
-    // res.render('tvshows/show', { title: 'tvshow Detail', tvshows, performers });
+    // res.render('tvshows/show', { title: 'tvshow Detail', tvshows, actors });
     res.redirect('back');
   } catch (err) {
     console.log(err);

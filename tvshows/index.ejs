@@ -1,5 +1,9 @@
 <%- include('../partials/header') %>
 
+<body id="page-background1">
+
+
+
 <table id="list">
   <thead>
     <tr>
@@ -14,11 +18,11 @@
         <td><%= m.title %></td>
         <td><%= m.releaseYear %></td>
         <td><a href="/tvshows/<%= m._id %>">DETAILS</a></td>
-        
-        
       </tr>
-      <% }); %>
-    </tbody>
-  </table>
-  
+    <% }); %>
+  </tbody>
+</table>
+
+</body> 
+
 <%- include('../partials/footer') %>

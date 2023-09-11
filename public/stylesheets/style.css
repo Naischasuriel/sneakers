@@ -1,168 +1,87 @@
 * {
   box-sizing: border-box;
-  font-family: Helvetica;
-  color: #424748;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease; /* for smooth transitions */
 }
 
 body {
-  margin: 0;
-  height: 100vh;
-  display: grid;
-  grid-template-rows: 50px 1fr;
-  grid-template-areas: 
-    "nav"
-    "main"
+  font-family: 'Arial', sans-serif;
+  background: url("https://wallpaperaccess.com/full/627955.jpg") no-repeat center center fixed;
+  background-size: cover; 
+  color: #FF6B6B;
+  overflow-x: hidden;
 }
-
-body > nav {
-  grid-area: nav;
-  background-color: #B8C0C2;
+nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  padding: 0 20px 0 30px;
+  background-color: rgba(0, 0, 0, 0.8); /* semi-transparent black */
+  padding: 10px 50px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
 
-nav > img {
-  width: 34px;
-  object-fit: contain;
-  margin-right: auto;
+nav img {
+  width: 50px;
+  cursor: pointer;
 }
 
-body > main {
-  grid-area: main;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #E8ECEB;
+nav a {
+  text-decoration: none;
+  margin: 0 10px;
+  padding: 8px 16px;
+  border-radius: 5px;
+  background-color: #FF6B6B;
+  color: #FFFFFF;
+  transition: transform 0.3s ease;
+}
+
+nav a:hover {
+  transform: scale(1.1); /* hover effect */
+}
+
+nav a.active {
+  background-color: #FF8B8B;
+  pointer-events: none; /* to disable clicking on the active link */
+
+}
+@keyframes buttonClick {
+  50% {
+      transform: scale(0.95);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+main {
   padding: 20px;
-  overflow-y: scroll;
-}
-
-body > main h1:first-child {
-  margin-bottom: 50px;
-}
-
-nav > a {
+  background-color: rgba(0, 0, 0, 0.6); /* for a bit of overlay to ensure text readability */
+  border-radius: 5px;
   margin: 20px;
-  text-decoration: none;
-  padding: 10px;
-  border-radius: 5px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
 
-nav > a:hover:not(.active) {
-  color: white;
-  background-color: #424748;
-}
-
-nav > a.active {
-  color: white;
-  cursor: default;
-}
-
-#new-form {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(2, minmax(auto, 22rem));
-}
-
-#new-form *,
-#add-review-form *,
-#add-performer-form * {
-  font-size: 20px;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-#new-form input[type="submit"] {
-  grid-column: span 2;
-  width: 10rem;
-  margin-left: auto;
-}
-
-table {
-  font-size: 20px;
-}
-
-table thead th {
-  padding: 5px;
-  border-bottom: 2px solid #424748;
-}
-
-table td {
-  padding: 10px;
+h1 {
   text-align: center;
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+nav a {
+  /* ... other styles ... */
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Separate transitions for different properties */
 }
 
-#list td:nth-child(2), #list td:nth-child(3){
-  min-width: 100px;
+nav a:hover {
+  transform: scale(1.1); /* hover effect */
+  background-color: #FF8B8B; /* Lighter shade for hover */
 }
 
-#list a {
-  border-radius: 4px;
-  background-color: #B8C0C2;
-  padding: 4px;
-  text-decoration: none;
-  font-size: 14px;
+nav a:active {
+  animation: buttonClick 0.2s ease;
+  background-color: #FF6B6B; /* Original color */
+}
+nav a {
+  color: #723a3a; /* Ensure this color contrasts well with the background color */
 }
 
-#list a:hover {
-  background-color: white;
-}
-
-#show-page {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 1rem;
-}
-
-#show-page div:nth-child(even) {
-  font-weight: bold;
-}
-
-#add-review-form,
-#add-performer-form {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-#add-review-form input[type="submit"],
-#add-performer-form input[type="submit"]  {
-  width: 10rem;
-  grid-column: 2 / 3;
-}
-
-hr {
-  color: #424748
-}
-
-#badge-container {
-  display: flex;
-  flex-wrap: wrap;
-  /* padding: 1rem; */
-  width: 80%;
-  border: 2px solid #B8C0C2;
-  border-radius: .5rem;
-  margin: .5rem 0 2rem;
-}
-
-.badge {
-  background-color: #B8C0C2;
-  padding: .5rem;
-  margin: .5rem;
-  border-radius: .3rem;
-  font-size: .8rem;
-  text-align: center;
-}
-
-#show-page ul {
-  margin: 0 0 2rem;
-  padding: 0;
-  list-style: none;
-}
-  
-#show-page li {
-  font-weight: bold;
-}
