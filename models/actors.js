@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const actorSchema = new Schema({
   name: {
     type: String,
-required: true,
     unique: true
   }
 }, {

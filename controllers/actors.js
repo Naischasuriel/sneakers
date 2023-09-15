@@ -34,11 +34,11 @@ async function create(req, res) {
   async function deleteActor(req, res) {
     try {
       await Actor.findByIdAndRemove(req.params.id);  // This will remove the actor with the given ID.
-      res.render('/actors/new'); // After deleting, redirect to the actor addition page.
+      res.redirect('back'); // After deleting, redirect to the actor addition page.
     } catch (err) {
       console.log(err);
-      res.send('There was an error deleting the actor.');
+      res.redirect('actors/delete');
     }
 }
-
+ 
 

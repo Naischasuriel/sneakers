@@ -12,6 +12,6 @@ router.post('/actors', actorsCtrl.create);
 // POST /tvshows/:id/actors (associate an actor with a tvshow)
 router.post('/tvshows/:id/actors', actorsCtrl.addToCast);
 //add delete route
-router.delete('actors/:id', actorsCtrl.delete);
+router.delete('/actors/:id', actorsCtrl.delete);
 
 module.exports = router;
